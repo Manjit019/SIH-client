@@ -4,7 +4,7 @@ import { ArrowRightCircle, UserPlus2Icon } from "lucide-react";
 export const Hero = () => {
   return (
     <div className="relative p-4 min-h-[70vh] mx-auto flex flex-col items-center justify-center gap-4 pt-24">
-      <div className="absolute inset-0 bg-[url('/virus-bg.jpeg')] bg-cover bg-center blur-[3px]" />
+      <div className="absolute inset-0 bg-[url('/assets/images/virus-bg.jpeg')] bg-cover bg-center blur-[3px]" />
 
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-accent to-black/70 backdrop-blur-3xl opacity-70" />
