@@ -1,11 +1,8 @@
 import { Hero } from "@/components/home/Hero";
 import { HowItWorksCard } from "@/components/home/HowItWorksCard";
-import { Button } from "@/components/ui/button";
-import { UserPlus2, TestTube2 } from "lucide";
 import {
   BoxIcon,
   CheckCircle,
-  CheckCircle2,
   ClipboardCheck,
   SparklesIcon,
   Syringe,
@@ -15,9 +12,9 @@ import {
 const HomePage = () => {
   const howItWorks = [
     {
-      title: "Register at Hospital",
+      title: "Register Yourself",
       description:
-        "Get registered at a certified hospital to create your health profile.",
+        "Create your health profile by registering independently or through a certified hospital",
       icon: <UserPlus2Icon size={24} className="text-white" />,
     },
     {
@@ -56,6 +53,7 @@ const HomePage = () => {
               title={item.title}
               subtitle={item.description}
               icon={item.icon}
+              index={index}
             />
           ))}
         </div>

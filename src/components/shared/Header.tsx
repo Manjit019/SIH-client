@@ -1,10 +1,26 @@
-import { Contact2, File, Home, User2, Info, ChevronDown, DownloadIcon, ArrowDownCircle, CheckCircle2Icon } from "lucide-react";
+import {
+  Contact2,
+  File,
+  Home,
+  User2,
+  Info,
+  ChevronDown,
+  DownloadIcon,
+  ArrowDownCircle,
+  CheckCircle2Icon,
+  Hamburger,
+  LucideMenu,
+  X,
+} from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
+import MobileMenu from "./MobileMenu";
+import HamburgerButton from "../ui/HambergerBtn";
 
 const Header = () => {
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
   const navItems = [
     { name: "Home", href: "/", icon: <Home size={20} /> },
@@ -18,12 +34,12 @@ const Header = () => {
         {
           name: "Verify Certificate",
           href: "/certificate/verify",
-          icon : <CheckCircle2Icon size={16} />,
+          icon: <CheckCircle2Icon size={16} />,
         },
         {
           name: "Download Certificate",
           href: "/certificate/download",
-          icon : <ArrowDownCircle size={16} />,
+          icon: <ArrowDownCircle size={16} />,
         },
       ],
     },
@@ -35,14 +51,34 @@ const Header = () => {
     },
   ];
 
+  const handleHamburgerMenu = () => {
+    setIsHamburgerOpen(!isHamburgerOpen);
+  };
+
   return (
     <div className="px-4 py-2 bg-accent text-white flex items-center justify-between shadow z-20 fixed top-0 left-0 right-0">
       <div className="flex items-center gap-1">
         <img src="/logo.png" alt="Logo" className="h-8" />
-        <h1 className="text-2xl font-bold"> <span className="text-emerald-500">Get</span> DHP</h1>
+        <h1 className="text-2xl font-bold">
+          {" "}
+          <span className="text-emerald-500">Get</span> DHP
+        </h1>
       </div>
-      <nav>
-        <ul className=" space-x-1 hidden md:flex ">
+      <nav className="">
+        <HamburgerButton
+          isHamburgerOpen={isHamburgerOpen}
+          handleHamburgerMenu={handleHamburgerMenu}
+        />
+        
+        {/* {isHamburgerOpen && ( */}
+          <MobileMenu
+          isOpen={isHamburgerOpen}
+            navItems={navItems}
+            setIsHamburgerOpen={setIsHamburgerOpen}
+          />
+        {/* )} */}
+
+        <ul className="space-x-1 hidden md:flex ">
           {navItems.map((item) => {
             return (
               <li key={item.name}>
@@ -51,7 +87,7 @@ const Header = () => {
                   // onMouseEnter={() => {
                   //   item.isNestedElements && setIsMenuOpen(true);
                   // }}
-                  
+
                   onClick={() => {
                     item.isNestedElements && setIsMenuOpen(!isMenuOpen);
                   }}
@@ -61,7 +97,14 @@ const Header = () => {
                 >
                   {item.icon}
                   {item.name}
-                  {item.isNestedElements && <ChevronDown size={16} className={`transition-transform duration-300 ${isMenuOpen ? "rotate-180" : ""}`} />}
+                  {item.isNestedElements && (
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-300 ${
+                        isMenuOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  )}
                   {item.isNestedElements && isMenuOpen && (
                     <ul className="absolute top-13 bg-accent rounded-lg shadow-lg z-10">
                       {item.isNestedElements.map((subItem) => (
