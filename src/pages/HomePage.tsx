@@ -44,7 +44,7 @@ const HomePage = () => {
 
       <div className="relative z-10 mt-8 w-full ">
         <h2 className="text-2xl font-bold text-primary mb-4 flex items-center justify-center gap-1">
-          How It Works <SparklesIcon />
+          How It Works <SparklesIcon className="text-accent" />
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 max-w-6xl mx-auto">
           {howItWorks.map((item, index) => (
@@ -60,17 +60,17 @@ const HomePage = () => {
       </div>
 
       <h2 className="text-2xl font-bold text-primary mb-4 mt-8 flex items-center ml-4 gap-1">
-        <BoxIcon /> Benifits
+        <BoxIcon className="text-accent" /> Benefits
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 justify-center items-center bg-white rounded-2xl mx-4">
         <div className="">
-          {benifits.map((benifit, idx) => (
+          {benifits.map((benefit, idx) => (
             <div
               key={idx}
-              className="w-full rounded-2xl p-2 bg-white/60 border border-black/20 flex items-center gap-2 mb-2"
+              className="w-full rounded-2xl p-2 bg-white/60 border border-black/20 flex items-center-safe gap-2 mb-2"
             >
-              <CheckCircle className="text-accent mr-2" />{" "}
-              <h3>{benifit.title}</h3>
+              <CheckCircle size={20} className="text-accent min-w-[20px]" />{" "}
+              <h3>{benefit.title}</h3>
             </div>
           ))}
         </div>

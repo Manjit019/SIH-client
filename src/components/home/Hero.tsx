@@ -3,7 +3,7 @@ import { ArrowRightCircle, UserPlus2Icon } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <div className="relative p-4 min-h-[70vh] mx-auto flex flex-col items-center justify-center gap-4 pt-24">
+    <div className="relative p-4 min-h-[70vh] mx-auto flex flex-col items-center justify-center gap-4 pt-24 box">
       <div className="absolute inset-0 bg-[url('/assets/images/virus-bg.jpeg')] bg-cover bg-center blur-[3px]" />
 
       {/* Gradient overlay */}
@@ -13,7 +13,7 @@ export const Hero = () => {
           Ensuring <span className="text-emerald-500">Health & Safety</span> for
           Migrant Workers in Kerala
         </h1>
-        <p className="text-white/80 mt-4">
+        <p className="text-white/80 mt-4 mx-2">
           Register, Vaccinate, and Work Safely with Verified Health Records
         </p>
 

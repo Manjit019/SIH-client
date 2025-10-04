@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap");
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -57,7 +57,7 @@
 }
 
 * {
-  font-family:'Outfit', 'Inter', sans-serif;
+  font-family: "Outfit", "Inter", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -101,7 +101,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(98.611% 0.01988 197.148);
+  --background: oklch(99.257% 0.01055 197.577);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -140,5 +140,29 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .box {
+    --mask: radial-gradient(
+          6.25px at 50% calc(100% - 8.75px),
+          #000 99%,
+          #0000 101%
+        )
+        calc(50% - 10px) 0/20px 100%,
+      radial-gradient(6.25px at 50% calc(100% + 3.75px), #0000 99%, #000 101%)
+        50% calc(100% - 5px) / 20px 100% repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  }
+
+  .box-top {
+    --mask: radial-gradient(6.25px at 50% 8.75px, #000 99%, #0000 101%)
+        calc(50% - 10px) 0/20px 100%,
+      radial-gradient(6.25px at 50% -3.75px, #0000 99%, #000 101%) 50% 5px/20px
+        100% repeat-x;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
   }
 }

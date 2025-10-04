@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronDownCircle, ChevronRight } from "lucide-react";
 import React, { type FC } from "react";
 import { Link } from "react-router"; // Assuming you're using React Router; adjust if needed
 
@@ -7,14 +7,14 @@ const MobileMenu: FC<{
   isOpen: boolean;
   setIsHamburgerOpen: (isOpen: boolean) => void;
 }> = ({ navItems, isOpen, setIsHamburgerOpen }) => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(true);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
     <div
-      className={`md:hidden flex flex-col absolute top-14 left-0 w-full bg-accent/30 backdrop-blur-md rounded-lg shadow-lg z-10 ring ring-accent/50 p-4 transition-all duration-500 ease-in-out ${
+      className={`md:hidden flex flex-col  absolute top-14 left-0 w-full bg-accent/30 backdrop-blur-2xl rounded-lg shadow-lg z-10 ring ring-accent/50 p-4 transition-all duration-500 ease-in-out  ${
         isOpen
-          ? "opacity-100 scale-95 [transform:rotateX(0deg)]"
-          : "opacity-0 scale-95 [transform:rotateX(-90deg)]"
+          ? " scale-95 [transform:rotateX(0deg)]"
+          : " scale-0 origin-top [transform:rotateX(-90deg)]"
       }`}
       style={{ perspective: "1000px" }}
     >
@@ -29,7 +29,7 @@ const MobileMenu: FC<{
               key={item.name}
               className={`transform origin-top transition-all duration-[${
                 idx + 1
-              }00] ease-in-out mb-3 last:mb-0 ${
+              }00] ease-in-out mb-3  last:mb-0 ${
                 isOpen
                   ? "scale-100 ml-0 opacity-100"
                   : " scale-0 opacity-0 ml-32"
@@ -37,24 +37,28 @@ const MobileMenu: FC<{
             >
               <Link
                 to={item.href}
-                onClick={() => setIsHamburgerOpen(false)}
-                className={`hover:bg-white/20 rounded-2xl px-3 py-1 transition-all duration-300 flex items-center gap-1 text-sm w-fit ${
-                  item.isLogin ? "bg-white text-accent hover:text-white" : ""
+                className={`hover:bg-white/20 rounded-2xl px-3 py-1 transition-all duration-300 flex items-center justify-between gap-1 text-lg  w-full  ${
+                  item.isLogin ? "bg-white text-accent  hover:text-white" : ""
                 }`}
               >
-                {item.icon}
-                {item.name}
-                {item.isNestedElements && (
-                  <ChevronDown
-                    size={16}
-                    className={`transition-transform duration-300 ${
-                      isMenuOpen ? "rotate-180" : ""
-                    }`}
-                  />
+                <div className="flex items-center gap-1">
+                  {item.icon}
+                  {item.name}
+                </div>
+                {item.isNestedElements ? (
+                  <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="flex items-center">
+                  {isMenuOpen ? (
+                    <ChevronDownCircle size={16} className={`transition-transform duration-300 ${isMenuOpen ? "rotate-180" : ""}`} />
+                  ) : (
+                    <ChevronDownCircle size={16} className="" />
+                  )}
+                  </button>
+                ) : (
+                  <ChevronRight size={16} className="" />
                 )}
               </Link>
               {item.isNestedElements && isMenuOpen && (
-                <ul className="mt-2 ml-3 rounded-lg shadow-lg z-10">
+                <ul className="mt-2 ml-3 rounded-lg shadow z-10 ">
                   {item.isNestedElements.map((subItem: any) => (
                     <li
                       key={subItem.name}
@@ -62,7 +66,7 @@ const MobileMenu: FC<{
                     >
                       <Link
                         to={subItem.href}
-                        className=" rounded-2xl px-3 py-1 transition-all duration-300 flex items-center gap-1 text-sm w-fit"
+                        className=" rounded-2xl px-3 py-1 transition-all duration-300 flex items-center gap-1  w-fit"
                       >
                         {subItem.icon} {subItem.name}
                       </Link>

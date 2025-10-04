@@ -52,7 +52,7 @@ const Header = () => {
   };
 
   return (
-    <div className="px-4 py-2 bg-accent text-white flex items-center justify-between shadow z-20 fixed top-0 left-0 right-0">
+    <div className=" px-4 py-3 bg-gradient-to-br from-accent to-emerald-500 text-white flex items-center justify-between shadow z-20 fixed top-0 left-0 right-0">
       <div className="flex items-center gap-1">
         <img src="/logo.png" alt="Logo" className="h-8" />
         <h1 className="text-2xl font-bold">
