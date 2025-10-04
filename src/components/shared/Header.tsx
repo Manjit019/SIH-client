@@ -5,12 +5,8 @@ import {
   User2,
   Info,
   ChevronDown,
-  DownloadIcon,
   ArrowDownCircle,
   CheckCircle2Icon,
-  Hamburger,
-  LucideMenu,
-  X,
 } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router";

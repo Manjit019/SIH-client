@@ -1,4 +1,4 @@
-import { Menu as LucideMenu, X, XCircle } from "lucide-react";
+import { Menu as LucideMenu, XCircle } from "lucide-react";
 
 export default function HamburgerButton({
   isHamburgerOpen,
